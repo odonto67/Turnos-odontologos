@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Centro Odontológico</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body { margin:0; font-family:Arial,sans-serif; background:#f2f6f8; color:#333; }
 header { background:#2f7f98; color:white; padding:25px 15px; text-align:center; }
@@ -24,82 +23,64 @@ footer { text-align:center; font-size:12px; color:#666; margin-bottom:8px; }
 .ip { text-align:center; font-size:10px; color:#999; margin-bottom:15px; }
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>Centro Odontológico</h1>
 <p>Cuidamos tu sonrisa con atención profesional</p>
 <p><strong>Atención exclusiva en Argentina – Buenos Aires – CABA</strong></p>
 </header>
-
 <div class="container">
 <h2>Solicitar turno</h2>
 <p>Completá el formulario y nos contactaremos con vos.</p>
-
 <form id="formulario" action="mailto:OdontologiaHecha@gmail.com" method="post" enctype="text/plain">
-  <label>Nombre</label>
-  <input type="text" name="Nombre" minlength="3" required>
-
-  <label>Apellido</label>
-  <input type="text" name="Apellido" minlength="3" required>
-
-  <label>Ciudad</label>
-  <input type="text" name="Ciudad" required>
-
-  <label>Teléfono</label>
-  <input type="tel" name="Telefono" placeholder="Ej: 11XXXXXXXX" pattern="[0-9]{10}" required>
-
-  <label>Email</label>
-  <input type="email" name="Email" placeholder="TuCorreo@gmail.com" required>
-
-  <label>Tipo de consulta</label>
-  <select name="Consulta" required>
-    <option value="">Seleccionar</option>
-    <option>Control</option>
-    <option>Limpieza</option>
-    <option>Dolor</option>
-    <option>Estética</option>
-    <option>Urgencia</option>
-  </select>
-
-  <label>Elegí un viernes disponible</label>
-  <select name="Fecha" id="fecha" required>
-    <option value="">Cargando viernes...</option>
-  </select>
-
-  <label>Horario disponible</label>
-  <select name="Horario" required>
-    <option value="">Seleccionar</option>
-    <option>09:00 AM</option>
-    <option>10:00 AM</option>
-    <option>11:00 AM</option>
-  </select>
-
-  <button type="submit" id="enviarBtn">Enviar solicitud</button>
+<label>Nombre</label>
+<input type="text" name="Nombre" minlength="3" required>
+<label>Apellido</label>
+<input type="text" name="Apellido" minlength="3" required>
+<label>Ciudad</label>
+<input type="text" name="Ciudad" required>
+<label>Teléfono</label>
+<input type="tel" name="Telefono" placeholder="Ej: 11XXXXXXXX" pattern="[0-9]{10}" required>
+<label>Email</label>
+<input type="email" name="Email" placeholder="TuCorreo@gmail.com" required>
+<label>Tipo de consulta</label>
+<select name="Consulta" required>
+<option value="">Seleccionar</option>
+<option>Control</option>
+<option>Limpieza</option>
+<option>Dolor</option>
+<option>Estética</option>
+<option>Urgencia</option>
+</select>
+<label>Elegí un viernes disponible</label>
+<select name="Fecha" id="fecha" required>
+<option value="">Cargando viernes...</option>
+</select>
+<label>Horario disponible</label>
+<select name="Horario" required>
+<option value="">Seleccionar</option>
+<option>09:00 AM</option>
+<option>10:00 AM</option>
+<option>11:00 AM</option>
+</select>
+<button type="submit" id="enviarBtn">Enviar solicitud</button>
 </form>
-
 <div class="alert">
 ⚠️ Si al enviar la solicitud aparece un error, por favor abrí la página con el navegador <strong>Google Chrome</strong>.
 </div>
 </div>
-
 <div class="image-box">
-  <img src="diente.png" alt="Diente con cepillo">
+<img src="diente.png" alt="Diente con cepillo">
 </div>
-
 <footer>
 © 2026 Centro Odontológico
 </footer>
-
 <div class="ip" id="ip">Tu IP pública: cargando...</div>
-
 <script>
 fetch("https://api.ipify.org?format=json")
-  .then(res => res.json())
-  .then(data => { document.getElementById("ip").innerText = "Tu IP pública: " + data.ip; })
-  .catch(() => { document.getElementById("ip").innerText = "Tu IP pública: no disponible"; });
-
+.then(res => res.json())
+.then(data => { document.getElementById("ip").innerText = "Tu IP pública: " + data.ip; })
+.catch(() => { document.getElementById("ip").innerText = "Tu IP pública: no disponible"; });
 const fechaSelect = document.getElementById("fecha");
 fechaSelect.innerHTML = "<option value=''>Seleccionar</option>";
 const hoy = new Date();
@@ -108,7 +89,7 @@ for(let mes=0; mes<12; mes++){
   let dia=1;
   while(dia<=31){
     let fecha = new Date(anio, mes, dia);
-    if(fecha.getMonth() !== mes) break;
+    if(fecha.getMonth()!==mes) break;
     if(fecha.getDay()===5){
       let dd = fecha.getDate().toString().padStart(2,"0");
       let mm = (fecha.getMonth()+1).toString().padStart(2,"0");
@@ -123,16 +104,13 @@ for(let mes=0; mes<12; mes++){
     dia++;
   }
 }
-
 const form = document.getElementById("formulario");
 const btn = document.getElementById("enviarBtn");
-
 form.addEventListener("submit", function(e){
   btn.classList.add("enviado");
   btn.innerText = "Enviado ✔️";
-  setTimeout(()=>{ btn.classList.remove("enviado"); btn.innerText="Enviar solicitud"; }, 3000);
+  setTimeout(()=>{ btn.classList.remove("enviado"); btn.innerText="Enviar solicitud"; }, 10000);
 });
 </script>
-
 </body>
 </html>
