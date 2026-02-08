@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Centro Odontológico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f6f8;
+      color: #333;
+    }
+
+    header {
+      background: #2f7f98;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    header p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 25px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px;
+      background: #2f7f98;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #256879;
+    }
+
+    .alert {
+      margin-top: 15px;
+      padding: 10px;
+      background: #eef2f4;
+      border-left: 4px solid #f1c40f;
+      font-size: 13px;
+    }
+
+    .image-box {
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    .image-box img {
+      width: 220px;
+      max-width: 80%;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .ip {
+      text-align: center;
+      font-size: 10px;
+      color: #999;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Centro Odontológico</h1>
+  <p>Cuidamos tu sonrisa con atención profesional</p>
+  <p><strong>Atención exclusiva en Argentina – Buenos Aires – Villa Tesei</strong></p>
+</header>
+
+<div class="container">
+  <h2>Solicitar turno</h2>
+  <p>Completá el formulario y nos contactaremos con vos.</p>
+
+  <form
+    action="mailto:OdontologiaHecha@gmail.com"
+    method="post"
+    enctype="text/plain">
+
+    <label>Nombre</label>
+    <input type="text" name="Nombre" minlength="3" required>
+
+    <label>Apellido</label>
+    <input type="text" name="Apellido" minlength="3" required>
+
+    <label>Ciudad</label>
+    <input type="text" name="Ciudad" required>
+
+    <label>Teléfono</label>
+    <input type="tel" name="Telefono" placeholder="Ej: 11XXXXXXXX" pattern="[0-9]{10}" required>
+
+    <label>Email</label>
+    <input type="email" name="Email" placeholder="TuCorreo@gmail.com" required>
+
+    <label>Tipo de consulta</label>
+    <select name="Consulta" required>
+      <option value="">Seleccionar</option>
+      <option>Control</option>
+      <option>Limpieza</option>
+      <option>Dolor</option>
+      <option>Estética</option>
+      <option>Urgencia</option>
+    </select>
+
+    <button type="submit">Enviar solicitud</button>
+  </form>
+
+  <div class="alert">
+    ⚠️ Si al enviar la solicitud aparece un error, por favor abrí la página con el navegador <strong>Google Chrome</strong>.
+  </div>
+</div>
+
+<div class="image-box">
+  <img src="diente.png" alt="Diente con cepillo">
+</div>
+
+<footer>
+  © 2026 Centro Odontológico
+</footer>
+
+<div class="ip" id="ip">
+  Tu IP pública: cargando...
+</div>
+
+<script>
+  fetch("https://api.ipify.org?format=json")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("ip").innerText =
+        "Tu IP pública: " + data.ip;
+    })
+    .catch(() => {
+      document.getElementById("ip").innerText =
+        "Tu IP pública: no disponible";
+    });
+</script>
+
+</body>
+</html>
